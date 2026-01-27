@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let cardsToShow = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
         let maxIndex = Math.max(0, cards.length - cardsToShow);
         let autoPlayInterval;
+        let direction = 1; // 1 = forward, -1 = backward (for ping-pong effect)
 
         function updateCarousel() {
             const cardWidth = cards[0].offsetWidth + 24; // card width + gap
@@ -191,9 +192,25 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCarousel();
         }
 
-        // Auto-play functionality
+        // Ping-pong auto-slide: cycles forward then backward in a loop
+        function autoSlide() {
+            currentIndex += direction;
+
+            // Reverse direction at boundaries
+            if (currentIndex >= maxIndex) {
+                currentIndex = maxIndex;
+                direction = -1; // Start going backward
+            } else if (currentIndex <= 0) {
+                currentIndex = 0;
+                direction = 1; // Start going forward
+            }
+
+            updateCarousel();
+        }
+
+        // Auto-play functionality with ping-pong effect
         function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 5000); // Cycle every 5 seconds
+            autoPlayInterval = setInterval(autoSlide, 5000); // Cycle every 5 seconds
         }
 
         function stopAutoPlay() {
