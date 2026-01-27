@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Our Work Gallery | Core Exteriors | London, Ontario</title>
+    <meta name="title" content="Our Work Gallery | Core Exteriors | London, Ontario">
+    <meta name="description"
+        content="Browse our latest deck restoration, cleaning, and exterior maintenance projects in London, Ontario. See before and after photos and videos of our professional work.">
+    <meta name="author" content="Core Exteriors">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://corexteriors.ca/gallery.html">
+
+    <!-- Local SEO -->
+    <meta name="geo.region" content="CA-ON">
+    <meta name="geo.placename" content="London, Ontario">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://corexteriors.ca/gallery.html">
+    <meta property="og:title" content="Our Work Gallery | Core Exteriors | London, Ontario">
+    <meta property="og:description"
+        content="Browse our latest deck restoration, cleaning, and exterior maintenance projects. See the transformation!">
+    <meta property="og:image" content="https://corexteriors.ca/images/og-image.jpg">
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Gallery-specific styles */
+        .gallery-hero {
+            background: linear-gradient(135deg, var(--sky-blue) 0%, #2980b9 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .gallery-hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Filter Buttons */
+        .filter-section {
+            background: var(--light-gray);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .filter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border: 2px solid var(--sky-blue);
+            background: white;
+            color: var(--sky-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--sky-blue);
+            color: white;
+        }
+
+        /* Gallery Content */
+        .gallery-content {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Video Section */
+        .videos-section {
+            margin-bottom: 60px;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: #0a0a0a;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+            color: #666;
+        }
+
+        .video-placeholder svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        .video-card-label {
+            padding: 16px 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Photos Section */
+        .photos-section {
+            margin-bottom: 60px;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .image-slot {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-slot.before {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .image-slot.after {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .placeholder-image svg {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .placeholder-image span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .photo-card-label {
+            padding: 16px 20px;
+            font-weight: 600;
+            color: #1a1a2e;
+            background: var(--light-gray);
+        }
+
+        /* Gallery CTA */
+        .gallery-cta {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cta-button-large {
+            display: inline-block;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, #2980b9 100%);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero {
+                padding: 100px 20px 60px;
+            }
+
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-hero p {
+                font-size: 1rem;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-section-title {
+                font-size: 1.5rem;
+            }
+
+            .videos-grid,
+            .photos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.2s;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .lightbox-label {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Make photo cards clickable */
+        .photo-card .image-slot img {
+            cursor: zoom-in;
+        }
+
+        /* Lightbox Navigation */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            padding: 20px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 10001;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .lightbox-next {
+            right: 20px;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        /* Multi-image card */
+        .photo-card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+        }
+
+        .photo-card-grid .image-slot {
+            aspect-ratio: 4/3;
+            position: relative;
+        }
+
+        .photo-card-grid .image-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: zoom-in;
+        }
+
+        /* Keep deck card from being too wide */
+        .photo-card.photo-card-wide {
+            max-width: 500px;
+        }
+
+        .image-stage-label {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                font-size: 1.5rem;
+                padding: 15px 10px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="utility-bar">
+            <div class="utility-container">
+                <div class="utility-left">
+                    <a href="mailto:info@corexteriors.com" class="utility-link">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>Email Us</span>
+                    </a>
+                    <a href="tel:606-616-2026" class="utility-link">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        <span>606-616-2026</span>
+                    </a>
+                </div>
+                <div class="utility-right">
+                    <button class="lang-toggle" id="langToggle" aria-label="Switch to French">
+                        <span class="lang-text">FR</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Core Exteriors Logo" class="logo-image">
+                </a>
+
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#why-us">Why Us</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <a href="contact.html" class="cta-button">GET A FREE ESTIMATE</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="gallery-hero-container">
+            <h1>Our Work Gallery</h1>
+            <p>Browse our latest projects and videos.</p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="filter-section" id="gallery-top">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="decks">Decks</button>
+            <button class="filter-btn" data-filter="powerwash">Power Wash</button>
+            <button class="filter-btn" data-filter="cleanup">Clean Up</button>
+            <button class="filter-btn" data-filter="videos">Videos</button>
+        </div>
+    </section>
+
+    <!-- Gallery Content -->
+    <section class="gallery-content">
+
+        <!-- Section 1: Decks -->
+        <div class="photos-section" data-category="decks">
+            <h2 class="gallery-section-title">Deck Restorations</h2>
+            <div class="photos-grid">
+                <!-- Deck Restoration (4 stages) -->
+                <div class="photo-card photo-card-wide" data-category="decks">
+                    <div class="photo-card-grid" data-gallery-group="deck-transformation">
+                        <div class="image-slot">
+                            <img src="images/deck-before.jpg" loading="lazy" alt="Stage 1: Mossy green deck"
+                                data-label="Deck Restoration - Stage 1: Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-stage-label">1. Before</span>
+                        </div>
+                        <div class="image-slot">
+                            <img src="images/deck-step2.jpg" loading="lazy" alt="Stage 2: Power washed deck"
+                                data-label="Deck Restoration - Stage 2: Power Washed"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-stage-label">2. Washed</span>
+                        </div>
+                        <div class="image-slot">
+                            <img src="images/deck-step3.jpg" loading="lazy" alt="Stage 3: Sanded deck"
+                                data-label="Deck Restoration - Stage 3: Sanded"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-stage-label">3. Sanded</span>
+                        </div>
+                        <div class="image-slot">
+                            <img src="images/deck-after.jpg" loading="lazy" alt="Stage 4: Stained deck"
+                                data-label="Deck Restoration - Stage 4: Stained"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-stage-label">4. Stained</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Deck Restoration - Full Transformation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Power Wash (Interlock, Siding) -->
+        <div class="photos-section" data-category="powerwash">
+            <h2 class="gallery-section-title">Power Wash Transformations</h2>
+            <div class="photos-grid">
+                <!-- Paver Power Wash - Westmount -->
+                <div class="photo-card" data-category="powerwash">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/paver-westmount-before.jpg" loading="lazy"
+                                alt="Paver walkway before power washing - Westmount"
+                                data-label="Paver Power Wash - Westmount - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/paver-westmount-after.jpg" loading="lazy"
+                                alt="Paver walkway after power washing - Westmount"
+                                data-label="Paver Power Wash - Westmount - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Paver Power Wash - Westmount</div>
+                </div>
+
+                <!-- Siding Cleaning - Masonville -->
+                <div class="photo-card" data-category="powerwash">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/siding-masonville-before.jpg" loading="lazy" alt="Siding before cleaning - Masonville"
+                                data-label="Siding Power Wash - Masonville - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/siding-masonville-after.jpg" loading="lazy" alt="Siding after cleaning - Masonville"
+                                data-label="Siding Power Wash - Masonville - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Siding Power Wash - Masonville</div>
+                </div>
+
+                <!-- Patio Power Wash & Restoration -->
+                <div class="photo-card" data-category="powerwash">
+                    <div class="image-slot" style="aspect-ratio: 4/3;">
+                        <img src="images/patio-powerwash.jpg" loading="lazy" alt="Restored patio pavers after power washing"
+                            data-label="Patio Power Wash & Restoration"
+                            style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="photo-card-label">Patio Power Wash & Restoration</div>
+                </div>
+
+                <!-- Siding Soft Wash Transformation -->
+                <div class="photo-card" data-category="powerwash">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/siding-cleaning-before.jpg" loading="lazy" alt="Dirty vinyl siding with green algae"
+                                data-label="Siding Soft Wash Transformation - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/siding-cleaning-after.jpg" loading="lazy" alt="Clean vinyl siding after soft wash"
+                                data-label="Siding Soft Wash Transformation - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Siding Soft Wash Transformation</div>
+                </div>
+
+                <!-- Patio Power Wash - Komoka -->
+                <div class="photo-card" data-category="powerwash">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/patio-komoka-before.jpg" loading="lazy"
+                                alt="Patio with weeds before power washing - Komoka"
+                                data-label="Patio Power Wash - Komoka - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/patio-komoka-after.jpg" loading="lazy" alt="Clean patio after power washing - Komoka"
+                                data-label="Patio Power Wash - Komoka - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Patio Power Wash - Komoka</div>
+                </div>
+
+                <!-- Driveway Power Wash - Oakridge -->
+                <div class="photo-card" data-category="powerwash">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/driveway-oakridge-before.jpg" loading="lazy"
+                                alt="Driveway before power washing - Oakridge"
+                                data-label="Driveway Power Wash - Oakridge - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/driveway-oakridge-after.jpg" loading="lazy" alt="Driveway after power washing - Oakridge"
+                                data-label="Driveway Power Wash - Oakridge - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Driveway Power Wash - Oakridge</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Clean Up (Gutter Cleaning) -->
+        <div class="photos-section" data-category="cleanup">
+            <h2 class="gallery-section-title">Clean Up Services</h2>
+            <div class="photos-grid">
+                <!-- Gutter Cleaning -->
+                <div class="photo-card" data-category="cleanup">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/gutter-before.jpg" loading="lazy" alt="Gutter filled with leaves before cleaning"
+                                data-label="Gutter Cleaning - London - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/gutter-after.jpg" loading="lazy" alt="Clean gutter after professional cleaning"
+                                data-label="Gutter Cleaning - London - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Gutter Cleaning - London</div>
+                </div>
+
+                <!-- Sidewalk Cleaning - Byron -->
+                <div class="photo-card" data-category="cleanup">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/sidewalk-byron-before.jpg" loading="lazy" alt="Sidewalk before cleaning - Byron"
+                                data-label="Sidewalk Cleaning - Byron - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/sidewalk-byron-after.jpg" loading="lazy" alt="Sidewalk after cleaning - Byron"
+                                data-label="Sidewalk Cleaning - Byron - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Sidewalk Cleaning - Byron</div>
+                </div>
+
+                <!-- Gutter Cleaning - Oakridge -->
+                <div class="photo-card" data-category="cleanup">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/gutter-oakridge-before.jpg" loading="lazy" alt="Gutter before cleaning - Oakridge"
+                                data-label="Gutter Cleaning - Oakridge - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/gutter-oakridge-after.jpg" loading="lazy" alt="Gutter after cleaning - Oakridge"
+                                data-label="Gutter Cleaning - Oakridge - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Gutter Cleaning - Oakridge</div>
+                </div>
+
+                <!-- Siding & Vine Clean Up - Hyde Park -->
+                <div class="photo-card" data-category="cleanup">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/siding-hydepark-before.jpg" loading="lazy"
+                                alt="Siding covered in vines before cleaning - Hyde Park"
+                                data-label="Siding & Vine Clean Up - Hyde Park - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/siding-hydepark-after.jpg" loading="lazy"
+                                alt="Siding after vine removal and cleaning - Hyde Park"
+                                data-label="Siding & Vine Clean Up - Hyde Park - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Siding & Vine Clean Up - Hyde Park</div>
+                </div>
+
+                <!-- Outdoor Rug Cleaning (Combined) -->
+                <div class="photo-card" data-category="cleanup">
+                    <div class="image-slot" style="aspect-ratio: 16/9; max-width: 500px; margin: 0 auto;">
+                        <img src="images/rug-cleaning-combined.jpg" loading="lazy" alt="Outdoor rug cleaning before and after"
+                            data-label="Outdoor Rug Cleaning - Before & After"
+                            style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="photo-card-label">Outdoor Rug Cleaning</div>
+                </div>
+
+                <!-- Gutter Cleaning - Wortley -->
+                <div class="photo-card" data-category="cleanup">
+                    <div class="before-after">
+                        <div class="image-slot before">
+                            <img src="images/gutter-wortley-before.jpg" loading="lazy"
+                                alt="Gutter with debris before cleaning - Wortley"
+                                data-label="Gutter Cleaning - Wortley - Before"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="image-slot after">
+                            <img src="images/gutter-wortley-after.jpg" loading="lazy" alt="Clean gutter after cleaning - Wortley"
+                                data-label="Gutter Cleaning - Wortley - After"
+                                style="width:100%;height:100%;object-fit:cover;">
+                            <span class="image-label">After</span>
+                        </div>
+                    </div>
+                    <div class="photo-card-label">Gutter Cleaning - Wortley</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Featured Videos (at bottom) -->
+        <div class="videos-section" data-category="videos">
+            <h2 class="gallery-section-title">Featured Videos</h2>
+            <p class="gallery-section-subtitle">Watch our team in action</p>
+            <div class="videos-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video playsinline preload="metadata" muted autoplay loop class="gallery-video">
+                            <source src="images/video1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-card-label">Deck Restoration Process</div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video playsinline preload="metadata" muted autoplay loop class="gallery-video">
+                            <source src="images/video2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-card-label">Power Washing Transformation</div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video playsinline preload="metadata" muted autoplay loop class="gallery-video">
+                            <source src="images/video3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-card-label">Gutter Cleaning</div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video playsinline preload="metadata" muted autoplay loop class="gallery-video">
+                            <source src="images/video4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-card-label">Exterior Cleaning</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="gallery-cta">
+            <a href="contact.html" class="cta-button-large">Get Your Free Quote</a>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="images/logo.png" alt="Core Exteriors Logo" class="footer-logo">
+                    <p class="footer-tagline">Premium Exterior Maintenance.<br>Student-Friendly Pricing.</p>
+                </div>
+
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        <span>203 Cambridge St, London, ON, N6H 1N6</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        <a href="tel:606-616-2026">606-616-2026</a>
+                    </div>
+                </div>
+
+                <div class="footer-areas">
+                    <h3 class="footer-heading">Service Areas</h3>
+                    <ul class="areas-list">
+                        <li>London</li>
+                        <li>St. Thomas</li>
+                        <li>Strathroy</li>
+                        <li>Dorchester</li>
+                    </ul>
+                </div>
+
+                <div class="footer-cta">
+                    <h3 class="footer-heading">Ready to Get Started?</h3>
+                    <a href="tel:606-616-2026" class="footer-cta-button">Get Your Free Quote</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023-2026 Core Exteriors. All rights reserved.</p>
+                <p class="footer-legal-links">
+                    <a href="privacy-policy.html">Privacy Policy</a> |
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Filter button functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+
+                // Get all sections
+                const sections = document.querySelectorAll('.photos-section, .videos-section');
+
+                sections.forEach(section => {
+                    if (filter === 'all') {
+                        section.style.display = 'block';
+                    } else {
+                        const sectionCategory = section.dataset.category;
+                        if (sectionCategory === filter) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    }
+                });
+
+                // Scroll to top of gallery when "All" is clicked
+                if (filter === 'all') {
+                    document.getElementById('gallery-top').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

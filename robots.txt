@@ -1,0 +1,26 @@
+# Core Exteriors - Robots.txt
+# https://corexteriors.ca
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://corexteriors.ca/sitemap.xml
+
+# Block common admin/dev paths (if any exist in future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Allow all search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Crawl delay to be polite
+Crawl-delay: 1
